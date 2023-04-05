@@ -26,3 +26,16 @@
 - 控制器
 - 映射器
 - 适配器
+
+
+### springmvc的view 不就是 django template
+| springmvc | name       | django       | name   |  
+|-----------|------------|--------------|--------|
+| view      | .jsp       | template     | .html  |
+| jstl      | 模板语法       | jinja2       | 模板语法   |
+| model     | new User() | model        | User() |
+
+
+### modelAndView
+
+
