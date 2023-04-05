@@ -8,7 +8,7 @@ public class CupController implements Controller {
     public ModelAndView handleRequest(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws Exception {
         System.out.println("controller ");
         ModelAndView modelAndView=new ModelAndView();
-        modelAndView.setViewName("login");
+        modelAndView.setViewName("cupList");
         return modelAndView;
     }
 }
