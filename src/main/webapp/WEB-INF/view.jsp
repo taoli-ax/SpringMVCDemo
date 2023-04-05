@@ -12,8 +12,6 @@
     <title>Title</title>
 </head>
 <body>
-
-<p>${send}</p>
-
+<P>free speech</P>
 </body>
 </html>
