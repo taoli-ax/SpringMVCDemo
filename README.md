@@ -27,7 +27,7 @@
 - 映射器
 - 适配器
 
-
+---
 ### springmvc的view 不就是 django template
 | springmvc | name       | django       | name   |  
 |-----------|------------|--------------|--------|
@@ -37,5 +37,18 @@
 
 
 ### modelAndView
+
+---
+
+### ViewResolver
+**物理视图是啥**  
+`逻辑视图 myView,加上prefix suffix变成物理视图`  
+`说白了 字符串拼接成文件名`
+
+**自定义解析器，了解原理**
+- model设置数据
+- return 返回视图名称 
+- BeanNameResolver转发到view视图
+- 视图用servlet转发数据和jsp页面
 
 
