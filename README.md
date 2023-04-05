@@ -41,14 +41,34 @@
 ---
 
 ### ViewResolver
-**物理视图是啥**  
-`逻辑视图 myView,加上prefix suffix变成物理视图`  
-`说白了 字符串拼接成文件名`
+**物理视图是啥** 
+- xml配置的是`InternalResourceViewResolver`
+- 逻辑视图是返回的字符串 `return "myView"`
+- 加上`prefix` `suffix` 就变成物理视图 ;) `说白了 字符串拼接成文件名`
 
 **自定义解析器，了解原理**
 - model设置数据
 - return 返回视图名称 
 - BeanNameResolver转发到view视图
 - 视图用servlet转发数据和jsp页面
+
+### RequestMapping
++ 类的`@RequestMapping`表示加一层路径 
++ WEB-INF可以阻止直接访问
+
+**一些个小点心技巧**
+- `@RequestMapping(method=RequestMethod.POST) `
+- `@RequestMapping(params={"验证=本人"})`
+```java
+@RequestMapping("path/{变量1}/{变量2}")
+public String landing (@PathVariable("变量1") String a,@PathVariable("变量2") String b){
+    return "view";
+        }
+```
+
+
+
+
+
 
 
