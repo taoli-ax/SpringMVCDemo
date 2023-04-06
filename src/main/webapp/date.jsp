@@ -15,5 +15,10 @@
   <input  name="date">
   <button>submit</button>
 </form>
+
+<form action="date/servlet-api" method="post">
+    <input  name="name">
+    <button>submit</button>
+</form>
 </body>
 </html>

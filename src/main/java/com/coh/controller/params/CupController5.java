@@ -5,6 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.Arrays;
 import java.util.List;
 
@@ -62,4 +66,6 @@ public class CupController5 {
         System.out.println(Arrays.toString(ids.toArray()));
         return null;
     }
+
+
 }
