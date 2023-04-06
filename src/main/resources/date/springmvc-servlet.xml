@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc
+         http://www.springframework.org/schema/mvc/spring-mvc.xsd
+          http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context.xsd
+">
+    <context:component-scan base-package="com.coh.controller.date"/>
+    <mvc:annotation-driven conversion-service="conversionService"/>
+    <!-- 映射器    -->
+<!--    <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>-->
+    <!-- 另一个版本的映射器    -->
+<!--    <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">-->
+<!--        <property name="mappings">-->
+<!--            <props>-->
+<!--                <prop key="/cup">/cup</prop>-->
+<!--            </props>-->
+<!--        </property>-->
+<!--    </bean>-->
+    <!-- 适配器-->
+<!--    <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"/>-->
+
+    <!--  解析器  -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+<!--    自定义日期转换-->
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="converters">
+            <set>
+                <bean class="com.coh.controller.date.DateConvert"/>
+            </set>
+        </property>
+    </bean>
+
+    <!--    控制器-->
+<!--    <bean id="/cup" class="com.coh.controller.CupController"/>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</beans>
