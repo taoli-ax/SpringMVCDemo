@@ -75,6 +75,12 @@ public String landing (@PathVariable("变量1") String a,@PathVariable("变量2"
 - 自动转为List
 
 
+### DateConversion
+
+- 自定义转换类继承Converter接口
+- 配置自定义服务到springmvc-config.xml `conversion-service="conversionService"`
+
+
 
 
 
