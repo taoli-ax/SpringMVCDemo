@@ -66,6 +66,13 @@ public String landing (@PathVariable("变量1") String a,@PathVariable("变量2"
         }
 ```
 
+### Parameters
+
+- Controller中的参数名称和 `<input name=""`保持一致
+- 自动转换数据类型
+- 自动封装POJO
+- 自动转换Array
+- 自动转为List
 
 
 
