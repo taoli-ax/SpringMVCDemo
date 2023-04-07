@@ -42,7 +42,7 @@ public class CupController5 {
     /**
      * landing.jsp
      * auto-encapsulation POJO
-     * @param cup Class Cup
+     * @param cup Class Cup2
      * @return
      */
     @RequestMapping("cup")

@@ -40,7 +40,7 @@ public class Cup {
 
     @Override
     public String toString() {
-        return "Cup{" +
+        return "Cup2{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", brand='" + brand + '\'' +
