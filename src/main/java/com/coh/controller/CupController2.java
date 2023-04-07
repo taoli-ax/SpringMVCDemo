@@ -28,8 +28,8 @@ public class CupController2 {
             Cup cup1=new Cup();
             Cup cup2=new Cup();
 
-            cup1.setName("Big Cup");
-            cup2.setName("small Cup");
+            cup1.setName("Big Cup2");
+            cup2.setName("small Cup2");
             cup1.setBrand("Starbucks");
             cup2.setBrand("Starbucks");
             list.add(cup1);
@@ -43,7 +43,7 @@ public class CupController2 {
             ArrayList<Cup> list=new ArrayList<>();
             Cup cup3=new Cup();
             cup3.setBrand("Starbucks");
-            cup3.setName("small Cup");
+            cup3.setName("small Cup2");
             list.add(cup3);
             model.addAttribute(list);
             return "cupList";

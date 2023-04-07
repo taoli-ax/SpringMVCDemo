@@ -11,7 +11,8 @@
 3. 原始的路径跳转
 4. ajax交互需要转换流
 ---
-总分总的叙事结构
+>#### 总分总的叙事结构
+
 ---
 
 **controller创建步骤**
@@ -28,7 +29,7 @@
 - 适配器
 
 ---
-### springmvc的view 不就是 django template
+>### springmvc的view 不就是 django template
 | springmvc | name       | django       | name   |  
 |-----------|------------|--------------|--------|
 | view      | .jsp       | template     | .html  |
@@ -36,11 +37,11 @@
 | model     | new User() | model        | User() |
 
 
-### modelAndView
+>### modelAndView
 
 ---
 
-### ViewResolver
+>### ViewResolver
 **物理视图是啥** 
 - xml配置的是`InternalResourceViewResolver`
 - 逻辑视图是返回的字符串 `return "myView"`
@@ -52,7 +53,10 @@
 - BeanNameResolver转发到view视图
 - 视图用servlet转发数据和jsp页面
 
-### RequestMapping
+
+---
+
+>### RequestMapping
 + 类的`@RequestMapping`表示加一层路径 
 + WEB-INF可以阻止直接访问
 
@@ -65,8 +69,9 @@ public String landing (@PathVariable("变量1") String a,@PathVariable("变量2"
     return "view";
         }
 ```
+---
 
-### Parameters
+>### Parameters
 
 - Controller中的参数名称和 `<input name=""`保持一致
 - 自动转换数据类型
@@ -74,13 +79,50 @@ public String landing (@PathVariable("变量1") String a,@PathVariable("变量2"
 - 自动转换Array
 - 自动转为List
 
+---
 
-### DateConversion
+>### DateConversion
 
 - 自定义转换类继承Converter接口
 - 配置自定义服务到springmvc-config.xml `conversion-service="conversionService"`
 
 
+---
+
+>### data Validation 
+**@chatGpt:第三方校验规则**
+- add `hibernate-validator-6.1.2` in pom && 配置`springmvc-servlet.xml`
+```pom
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>6.1.2.Final</version>
+        </dependency>
+```
+```xml
+    <mvc:annotation-driven validator="validator"/>
+    <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+        <property name="providerClass" value="org.hibernate.validator.HibernateValidator"/>
+    </bean>
+```
+
+**@chatGpt**`JSR-303` 有哪些注解
+1. @NotNull：验证对象是否为 null；
+2. @NotEmpty：验证字符串是否非空（不为 null，且长度 > 0）；
+3. @NotBlank：验证字符串是否非空且不仅包含空格字符；
+4. @Min：验证数字是否大于等于指定的最小值；
+5. @Max：验证数字是否小于等于指定的最大值；
+6. @Size：验证字符串、集合或数组的大小是否在指定的范围内；
+7. @Pattern：验证字符串是否匹配指定的正则表达式模式；
+8. @Past：验证日期是否在当前时间之前；
+9. @Future：验证日期是否在当前时间之后；
+10. @AssertTrue：验证布尔表达式是否为 true；
+11. @AssertFalse：验证布尔表达式是否为 false；
+12. @Email：验证字符串是否为有效的电子邮件地址。
+
+---
+#### bug fix
+- jstl显示源码：请在头文件加上`isELIgnored="false"`
 
 
 
