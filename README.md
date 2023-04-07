@@ -124,6 +124,27 @@ public String landing (@PathVariable("变量1") String a,@PathVariable("变量2"
 #### bug fix
 - jstl显示源码：请在头文件加上`isELIgnored="false"`
 
+> ### JsonAjaxInteract
+- 依赖包 
+```
+<dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-databind</artifactId>
+    <version>2.11.3</version>
+</dependency>
+
+```
+**前后端交互必须要json**
+- `@ResponseBody` 直接返回对象，无需再转换
+- ajax遍历的方式 `$.each(msg,function(key,value){console.log(value.id)})`
+- jquery method is `$(..).click` not onclick
+- `JSON.stringify({"":"","":""})`转换为json
+- `contentType:"application/json"`前端声明发送json, `@RequestBody` 后端接收json
+
+
+
+
+
 
 
 
