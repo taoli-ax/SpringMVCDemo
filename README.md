@@ -156,6 +156,27 @@ public String landing (@PathVariable("变量1") String a,@PathVariable("变量2"
 - springmvc自定义处理静态资源的位置mapping ` <mvc:resources`
 
 >### Interceptor
-
+拦截的请求会被处理，例外的请求则直接进入页面不会被处理，请求不会被拦截，也不会有任何处理。
 - 配置`<mvc:interceptors`
-- ` public boolean preHandle(){return true;}`返回true代表放行所有，false则中止被拦截的请求，但例外的依然执行
+- ` public boolean preHandle(){return true;}`返回true代表放行所有，false则中止被拦截的请求，但例外的依然不受影响
+
+
+>### file upload
+**@chatGpt** `springmvc处理文件上传`
+- 文件上传的页面是长这样的
+```html
+
+<form id="upload" action="upload" enctype="multipart/form-data" method="post" >
+  <input type="file" name="file">
+  <input type="submit" name="upload">
+</form>
+```
+
+- 依赖的jar包叫 `commons-io`
+- 增加一个bean,启用multipart支持,注意要加id `<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>`
+- `@RequestParam("file")`来接收上传的文件,注意这个`file`要和标签的`name`属性保持一致
+- 设置属性`<property name="defaultEncoding"`
+
+**topic:如何上传到指定目录并防止同名覆盖**
+- 使用uuid,或时间戳替换文件名
+
