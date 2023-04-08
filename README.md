@@ -150,5 +150,8 @@ public String landing (@PathVariable("变量1") String a,@PathVariable("变量2"
 - `@RequestMapping("cups")` 放在类上，方法上无需再指定路径
 
 
-
+### StaticResources
+- tomcat默认的servlet处理静态资源，但自己配置的web.xml中的前端控制器servlet可能会影响
+- springmvc指定默认servlet处理静态资源
+- springmvc自定义处理静态资源的位置mapping ` <mvc:resources`
 

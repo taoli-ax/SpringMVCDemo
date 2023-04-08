@@ -11,6 +11,7 @@
     <title>Title</title>
 </head>
 <body>
+<img src="image/demo.png">
 <form id="update" action="cups" method="post">
     <input type="hidden" name="_method" value="put">
     <input name="name">
