@@ -143,15 +143,19 @@ public String landing (@PathVariable("变量1") String a,@PathVariable("变量2"
 
 
 
->#### Restful
+>### Restful
 实现 restful风格的要点：
 - `@RestController` 替代 `@Controller`
 -  `@GetMapping(value = "{id}")` 方法上方指定id `@PathVariable("id")` 方法中指定对应的参数名称
 - `@RequestMapping("cups")` 放在类上，方法上无需再指定路径
 
 
-### StaticResources
+>### StaticResources
 - tomcat默认的servlet处理静态资源，但自己配置的web.xml中的前端控制器servlet可能会影响
 - springmvc指定默认servlet处理静态资源
 - springmvc自定义处理静态资源的位置mapping ` <mvc:resources`
 
+>### Interceptor
+
+- 配置`<mvc:interceptors`
+- ` public boolean preHandle(){return true;}`返回true代表放行所有，false则中止被拦截的请求，但例外的依然执行
