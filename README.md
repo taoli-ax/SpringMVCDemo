@@ -139,11 +139,15 @@ public String landing (@PathVariable("变量1") String a,@PathVariable("变量2"
 - ajax遍历的方式 `$.each(msg,function(key,value){console.log(value.id)})`
 - jquery method is `$(..).click` not onclick
 - `JSON.stringify({"":"","":""})`转换为json
-- `contentType:"application/json"`前端声明发送json, `@RequestBody` 后端接收json
+- `contentType:"application/json"`前端声明发送json, `@RequestRequest` 后端接收json
 
 
 
-
+>#### Restful
+实现 restful风格的要点：
+- `@RestController` 替代 `@Controller`
+-  `@GetMapping(value = "{id}")` 方法上方指定id `@PathVariable("id")` 方法中指定对应的参数名称
+- `@RequestMapping("cups")` 放在类上，方法上无需再指定路径
 
 
 
