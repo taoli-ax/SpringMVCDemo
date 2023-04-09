@@ -171,7 +171,7 @@ public String landing (@PathVariable("变量1") String a,@PathVariable("变量2"
   <input type="submit" name="upload">
 </form>
 ```
-
+>### Exception
 - 依赖的jar包叫 `commons-io`
 - 增加一个bean,启用multipart支持,注意要加id `<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>`
 - `@RequestParam("file")`来接收上传的文件,注意这个`file`要和标签的`name`属性保持一致
@@ -180,3 +180,75 @@ public String landing (@PathVariable("变量1") String a,@PathVariable("变量2"
 **topic:如何上传到指定目录并防止同名覆盖**
 - 使用uuid,或时间戳替换文件名
 
+>### SSM Integration
+
+1. 添加依赖
+   - mybatis
+   - spring-webmvc
+   - spring-web
+   - spring-jdbc
+   - spring-orm
+   - spring-mybatis
+   - mysql
+   - druid
+   - jackson-databind
+   - log4j
+   - servlet-api
+   
+2. 配置web.xml
+   1. springmvc frontend Controller
+   2. restful Filter
+   3. unicode Filter
+   4. Spring Listener
+   5. springmvc location
+3. 配置 springmvc
+   ```xml
+    <!--    扫包-->
+    <context:component-scan base-package="com.coh.controller"/>
+    <mvc:annotation-driven/>
+    <mvc:default-servlet-handler/>
+    <!--  解析器  -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+   ```
+4. 配置 spring
+   ```xml
+    <!--    扫描-->
+    <contenxt:component-scan base-package="com.coh">
+    <!--        排除@Controller,以防扫两遍-->
+        <contenxt:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </contenxt:component-scan>
+
+    <!--    生成数据库连接池-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/db0?characterEncoding=utf-8&amp;serverTimezone=GMT"/>
+        <property name="username" value="root"/>
+        <property name="password" value="123456"/>
+    </bean>
+    <!--生成sqlSessionFactory-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="typeAliasesPackage" value="com.coh.pojo"/>
+    </bean>
+    <!--扫描dao下所有的daoMapper.xml,生成实例-->
+    <bean id="mapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+        <property name="basePackage" value="com.coh.dao"/>
+    </bean>
+    <!--事务管理器-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <!--    声明式事务管理 -->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+   ```
+5. 生成mybatis
+  - `你懂的`
+6. coding for service and controller
+
+
+**bug fix**  
+- `redirect:/login.jsp`此处要加`/`和`.jsp`否则找不到正确位置
