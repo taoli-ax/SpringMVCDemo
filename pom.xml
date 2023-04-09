@@ -7,7 +7,10 @@
     <groupId>com.coh</groupId>
     <artifactId>SpringMVCDemo</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>pom</packaging>
+    <modules>
+        <module>ssmIntegration</module>
+    </modules>
 
     <properties>
         <project.build.source>utf-8</project.build.source>
