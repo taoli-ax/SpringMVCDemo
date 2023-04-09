@@ -252,3 +252,6 @@ public String landing (@PathVariable("变量1") String a,@PathVariable("变量2"
 
 **bug fix**  
 - `redirect:/login.jsp`此处要加`/`和`.jsp`否则找不到正确位置
+
+
+### demo之旅结束，示例项目停更，转到真正的项目中去了 ;)
